@@ -1,0 +1,80 @@
+body{
+    min-height: 100vh;
+}
+#hero1{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(197, 197, 197);
+    background-image: url(/images/hero2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.label{
+padding:1rem;
+}
+#label3 {
+    margin-top:0.2rem;
+    padding: 0.8rem;
+    background: #00000073;
+}
+#sec1{
+    padding:3rem;
+    max-width: 30rem;
+    background: white;
+    position: absolute;
+    left: 2rem;
+    top: 35rem;
+}
+#sec2{
+    padding:3rem;
+    max-width: 30rem;
+    background: white;
+    position: absolute;
+    right: 2rem;
+    top: 80rem;
+}
+@media(max-width:600px){
+    #hero1{
+        background-image: url(/images/hero2.1x.jpg);
+    }
+    #sec1{
+        max-width: 100vw;
+        left: 0rem;
+    }
+    #sec2{
+        max-width: 100vw;
+        top:90rem;
+        right: 0rem;
+    }
+}
+#top{
+    padding:1rem 1.5rem;
+    position: fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    max-height: 5rem;
+    z-index: 1;
+}
+#sec3{
+    position: absolute;
+    top:130rem;
+    width:100%;
+    background: white;
+}
+#hero2{
+   padding:4rem 2rem;
+}
+#hero3{
+    padding:4rem 2rem;
+     padding-top: 0px;
+}
+#menuGrid{
+    padding-left: 0.5rem;
+}
+#footer{
+    background: rgb(239, 239, 239);
+    min-height: 8rem;
+}
