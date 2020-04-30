@@ -7,4 +7,6 @@ const users = require('./models.js').users;
 const students = require('./models.js').students;
 const fees = require('./models.js').fees;
 
-module.exports = { time, code, users, students, fees };
+const baseDir = __dirname;
+
+module.exports = { time, code, users, students, fees, baseDir };

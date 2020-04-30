@@ -5,43 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/common.css" />
+    <script type="text/javascript" src="components.js"></script>
     </head>
     <body>
-        <div id="top" class="ink-white base-light size-s"><div id="shoc">SHOC</div></div>
+        <x-navbar position="fixed"></x-navbar>
         <div id="main" class="center-col">
-            <div class="center size-l base-semibold ink-black" id="txt">
+            <x-text size="l" base="semibold" align="center" ink="primary" id="txt">
           The page you’re looking for can’t be found.
-        </div>
-         <div id="links">
-             <div class="ink-black size-m base-regular">Navigate</div>
-             <div id="menuGrid" class="ink-blue size-s">
-                    <div><a href="/">Home ></a></div>
-                    <div>Admissions ></div>
-                    <div>Parental guides ></div>
-                    <div>Classroom ></div>
-                    <div>Programs ></div>
-                    <div>Contact us ></div>
-                  </div>
-         </div>
+            </x-text>
+         
         </div>
       
-     
+        <x-footer></x-footer>
     </body>
 </html>
 <style>
-    #top{
-        position: fixed;
-        top:0px;
-        left:0px;
-        width:100vw;
-       padding:0.7rem 1rem;
-        background: rgba(0, 0, 0, 0.64);
-    }
-    #links{
-        display: block;
-    text-align: left;
-    width: 100%;
-    }
     #menuGrid{
     padding-left: 0.5rem;
 }
@@ -54,9 +32,3 @@
     max-width: 30rem;
 }
 </style>
-
-<script>
-document.getElementById("shoc").addEventListener("click",function(){
-    window.location.href="/";
-})
-</script>

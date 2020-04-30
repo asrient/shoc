@@ -5,6 +5,67 @@
   outline: none;
 }
 
+:root {
+  --white: rgb(255, 255, 255);
+  --light: rgb(219, 219, 219);
+  --grey: rgb(128, 128, 128);
+  --dark: rgb(59, 59, 59);
+  --black: rgb(24, 24, 24);
+
+  --red: #FF004E;
+  --blue: #00A8FF;
+  --green: rgb(76, 217, 100);
+  --purple: rgb(132, 0, 255);
+  --orange: #FFB84D;
+
+  --primary: var(--black);
+  --secondary: var(--dark);
+  --tertiary: var(--light);
+  --bg: var(--white);
+
+  --xs: 0.8rem;
+  --s: 1rem;
+  --m: 1.2rem;
+  --l: 1.5rem;
+  --xl: 2rem;
+  --xxl: 3rem;
+
+  --base-light: 200;
+  --base-semilight: 400;
+  --base-regular: 600;
+  --base-semibold: 700;
+  --base-bold: 800;
+}
+
+@media(min-width:360px) {
+  :root {
+    --xs: 0.9rem;
+    --s: 1rem;
+    --m: 1.4rem;
+    --l: 1.6rem;
+    --xl: 2.1rem;
+    --xxl: 3.3rem;
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --xs: 1rem;
+    --s: 1.1rem;
+    --m: 1.6rem;
+    --l: 1.8rem;
+    --xl: 2.5rem;
+    --xxl: 3.5rem;
+  }
+}
+
+[data-theme="dark"] {
+  --primary: var(--white);
+  --secondary: var(--light);
+  --tertiary: var(--dark);
+  --bg: var(--black);
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -25,17 +86,10 @@ body {
 html,
 body {
   font-family: 'Segoe UI', sans-serif;
-  font-size: 1.1rem;
+  font-size: var(--s);
   font-weight: 300;
-  color: #818181;
-}
-
-@media (min-width: 992px) {
-
-  html,
-  body {
-    font-size: 1.2rem;
-  }
+  color: var(--secondary);
+  background-color: var(--bg);
 }
 
 hr {
@@ -56,7 +110,7 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--tertiary);
 }
 
 p {
@@ -78,149 +132,12 @@ button {
   border: 0.5px rgba(0, 0, 0, 0.1) solid;
   box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.28);
   color: white;
-  cursor: url("common://cursors/poke.cur"), auto;
   transition-property: all;
   transition-duration: 100ms;
 }
 
 .maxHt {
   height: 100%;
-}
-
-.size-xs {
-  font-size: 0.8rem;
-}
-
-.size-s {
-  font-size: 1rem;
-}
-
-.size-m {
-  font-size: 1.2rem;
-}
-
-.size-l {
-  font-size: 1.5rem;
-}
-
-.size-xl {
-  font-size: 2rem;
-}
-
-.size-xxl {
-  font-size: 3rem;
-}
-
-
-@media(min-width:360px) {
-  .size-xs {
-    font-size: 1rem;
-  }
-
-  .size-s {
-    font-size: 1.1rem;
-  }
-
-  .size-m {
-    font-size: 1.5rem;
-  }
-
-  .size-l {
-    font-size: 1.8rem;
-  }
-
-  .size-xl {
-    font-size: 2.2rem;
-  }
-
-  .size-xxl {
-    font-size: 3.5rem;
-  }
-
-}
-
-@media (min-width: 992px) {
-  .size-xl {
-    font-size: 3rem;
-  }
-
-  .size-l {
-    font-size: 2rem;
-  }
-
-  .size-m {
-    font-size: 1.8rem;
-  }
-
-  .size-s {
-    font-size: 1.15rem;
-  }
-
-  .size-xs {
-    font-size: 1rem;
-  }
-
-  .size-xxl {
-    font-size: 3.5rem;
-  }
-
-}
-
-
-.ink-black {
-  color: #2D2D2D;
-}
-
-.ink-dark {
-  color: #95989A;
-}
-
-.ink-light {
-  color: #D4D4D4;
-}
-
-.ink-white {
-  color: rgb(255, 255, 255);
-}
-
-.ink-blue {
-  color: #00A8FF;
-}
-
-.ink-orange {
-  color: #FFB84D;
-}
-
-.ink-red {
-  color: #FF004E;
-}
-
-.ink-green {
-  color: rgb(76, 217, 100);
-}
-
-.ink-purple {
-  color: rgb(132, 0, 255);
-}
-
-.base-light {
-  font-weight: 200;
-}
-
-.base-semilight {
-  font-weight: 400;
-}
-
-.base-regular {
-  font-weight: 600;
-}
-
-.base-semibold {
-  font-weight: 700;
-}
-
-.base-bold {
-  font-weight: 800;
 }
 
 .center {

@@ -5,89 +5,32 @@
     <link rel="stylesheet" type="text/css" href="/common.css" />
     <link rel="stylesheet" type="text/css" href="/home.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="components.js"></script>
     <script type="text/javascript" src="home.js"></script>
     <title>Sen House of Children</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "NewsArticle",
-        "headline": "A PlaySchool for your child like no other",
-        "image": [
-          "logo.jpg"
-        ]
-      }
-    </script>
   </head>
   <body>
-     <div id="top" class="ink-white base-semibold size-m">Sen House of Children</div>   
+    <x-navbar active="/" position="fixed"></x-navbar>
   <div id="hero1" class="center">
-    <div id="labels" class="center-col ink-white size-m base-semilight">
-      <div id="label1" class="label">NOW ENROLLING FOR 2020</div>
-      <div id="label2" class="label ink-light size-s base-regular">Come see if SHOC is right for your family!</div>
-      <div id="label3" class="label size-s ink-blue">Schedule a visit ></div>
+    <div>
+      <x-text size="xxl" ink="white" base="regular" opacity="0.8">SEN HOUSE OF CHILDREN</x-text> 
     </div>
   </div>  
-  <div id="sec1">
-    
-        <div class="ink-black base-bold size-m" style="padding-bottom:0.3rem" >Welcome!</div>
-   <div class="ink-dark base-semilight size-xs">
-      We thank you for your interest in Sen house of children. Our school has served families in Salt Lake
-       since 1974 when it was founded by the Sen family.
-       We are proud to be a parent participation preschool.
-      <br/>
-      As parents, we are all continually searching for the perfect school for our children.
-       We hope that the information you will find here will guide you in your decision.
-   </div>
-   
-    </div>
-
-    <div id="sec2">
-    
-        <div class="ink-black base-bold size-m" style="padding-bottom:0.3rem" >We belive</div>
-   <div class="ink-dark base-semilight size-xs">
-      that children learn through play. We respect each child’s uniqueness and allow them to grow at their own pace.
-       We provide a safe and nurturing environment that allows children to develop in all areas: socially, emotionally,
-        cognitively, linguistically and physically.
-         Our goal is to instill a joy in learning that each child will carry throughout their life.
-   </div>
-   
-    </div>
-
-    <div id="sec3">
-      <div id="hero2" class="center">
-          <div class="ink-dark base-semilight size-xs" style="max-width:40rem">
-              SHOC offers a home-away-from-home atmosphere that makes children feel comfortable and helps them explore freely.
-               Within this safe environment we provide a developmental curriculum.
-                This means that planning is done through a process of observing the children,
-                 evaluating their individual interests and needs, then planning the activities accordingly.
-                 <br/><br/>
-                 <div class="ink-blue">Programs offered here ></div>
-           </div>
-      </div>
-      <div id="hero3">
-        <div class="size-m ink-black base-regular">Learn more</div>
-        <div id="menuGrid" class="ink-blue size-s">
-          <div>Admissions ></div>
-          <div>Parental guides ></div>
-          <div>Classroom ></div>
-          <div>Programs ></div>
-          <div>Contact us ></div>
-        </div>
-      </div>
-      <div id="footer">
-        <div class="center ink-dark base-light size-s" style="padding:1.2rem 0.5rem">BF 3, Sector 1, Salt Lake, Kolkata 700064</div>
-        <div class="center ink-black base-light size-s" style="padding:1.2rem 0.5rem;padding-top:0">
-          <div>
-             <div>call: <a href="tel:8334009522">8334009522</a></div>
-          <div>email: <a href="mailto:senhouse@gmail.com">senhouse@gmail.com</a></div>
-          </div>
-         
-        </div>
-      </div>
-    </div>
-
-
+<div id="sec1">
+  <div style="max-width: 40rem;">
+     <x-text size="xl" ink="primary" align="center" base="light" >Excellence & care. For each and every student.</x-text>
+     <br/>
+  <x-text size="s" ink="secondary" align="center" >
+    SHOC offers a home-away-from-home atmosphere that makes children feel comfortable and helps them explore freely.
+    Within this safe environment we provide a developmental curriculum.
+     This means that planning is done through a process of observing the children,
+      evaluating their individual interests and needs, then planning the activities accordingly.
+      <br/><br/>
+    </x-text>
   </div>
+ 
+</div>
+<x-footer></x-footer>
   </body>
 </html>

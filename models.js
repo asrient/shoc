@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 
 let student = new mongoose.Schema({
     enroll: { type: String, required: true, unique: true },
-    joining_year: Number,
+    joining_date: String,
     name: String,
     birthdate: String,
     phone_no: Number,
