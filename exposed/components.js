@@ -16,62 +16,6 @@ a {
 `;
 
 
-class Text extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({
-            mode: 'open'
-        });
-        this.shadowRoot.innerHTML = (sharedStyles + '<div id="txt"><slot></slot></div>');
-    }
-    sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl'];
-    bases = ['light', 'semilight', 'regular', 'semibold', 'bold'];
-    inks = ['white', 'light', 'dark', 'grey', 'black', 'primary', 'secondary', 'tertiary', 'bg', 'red', 'blue', 'green', 'purple', 'orange'];
-    static get observedAttributes() {
-        return ['size', 'ink', 'base', 'style','align','opacity','max-width'];
-    }
-    connectedCallback() {
-        
-    }
-    disconnectedCallback() {
-        console.log("comp disconnected");
-    }
-    attributeChangedCallback(attrName, oldVal, newVal) {
-        const txt = this.shadowRoot.getElementById('txt');
-       // console.log("new attributes", attrName, oldVal, newVal);
-        if (attrName == 'size') {
-            if (this.sizes.includes(newVal)) {
-                txt.style.fontSize = 'var(--' + newVal + ')';
-            }
-            else
-            txt.style.fontSize = newVal;
-        }
-        else if (attrName == 'base') {
-            if (this.bases.includes(newVal)) {
-                txt.style.fontWeight = 'var(--base-' + newVal + ')';
-            }
-            else
-            txt.style.fontWeight = newVal;
-        }
-        else if (attrName == 'ink') {
-            if (this.inks.includes(newVal)) {
-                txt.style.color = 'var(--' + newVal + ')';
-            }
-            else
-            txt.style.color = newVal;
-        }
-        else if(attrName=='align'){
-            txt.style.textAlign=newVal;
-        }
-        else if(attrName=='opacity'){
-            txt.style.opacity=newVal;
-        }
-        else if(attrName=='max-width'){
-            txt.style.maxWidth=newVal;
-        }
-    }
-}
-
 class NavBar extends HTMLElement {
     constructor() {
         super();
@@ -246,9 +190,9 @@ class NavBar extends HTMLElement {
 class Footer extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({
+        /*this.attachShadow({
             mode: 'open'
-        });
+        });*/
         this.state = {}
     }
     static get observedAttributes() {
@@ -281,26 +225,31 @@ class Footer extends HTMLElement {
         const css = `<style>
         #footer{
             background: var(--tertiary);
-            min-height: 8rem;
+            min-height: 2rem;
             width: 100%;
-            background-image:url(/images/footer-bg.png);
-        }
+          }
         </style>`;
 
         var html = `<div id="footer">
-        <div style="padding:1.2rem 0.5rem"><x-text ink="secondary">BF 3, Sector 1, Salt Lake, Kolkata 700064</x-text></div>
-        <div style="padding:1.2rem 0.5rem;padding-top:0">
-          <x-text ink="secondary">call: <a href="tel:8334009522">8334009522</a></x-text>
-          <x-text ink="secondary">email: <a href="mailto:senhouse@gmail.com">senhouse@gmail.com</a></x-text>
+        <div style="padding:1.2rem 0.5rem" class="center-col ink-grey base-semilight size-xs">
+          <div class="size-m ink-primary base-semilight">Sen House of Children</div>
+          <div>BF 3, Sector 1, Salt Lake, Kolkata 700064</div>
         </div>
-      </div>`;
+        <div class="center">
+          <div style="width:100%;padding:2rem 0.5rem;padding-top:0;max-width:40rem;" class="hstack space-around size-xs">
+            <a href="https://goo.gl/maps/Gh3MknQsfxZT5sRQA">Visit</a>
+            <a href="tel:8334009522">Call</a>
+            <a href="mailto:senhouse@gmail.com">Email</a>
+            <a href="https://fb.com/senhouseofchildren">Facebook</a>
+         </div>
+         </div>
+       </div>`;
 
-        this.shadowRoot.innerHTML = (sharedStyles + css + html);
+        this.innerHTML = (css + html);
         this.listen();
     }
 }
 
-window.customElements.define('x-text', Text);
 window.customElements.define('x-navbar', NavBar);
 window.customElements.define('x-footer', Footer);
 
@@ -320,7 +269,7 @@ function detectColorTheme() {
     if (theme == "dark") {
         document.documentElement.setAttribute("data-theme", "dark");
     }
-    else{
+    else {
         document.documentElement.setAttribute("data-theme", "light");
     }
 }

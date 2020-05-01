@@ -12,9 +12,13 @@ body{
     background-size: cover;
     background-position: center;
 }
-#sec1{
-    padding:3rem;
-    display: flex;
-    justify-content: center;
+#sec{
+    display: block;
     background-image:url(/images/bk.png);
+}
+#sec1{
+    padding:2rem;
+}
+#sec2{
+    padding:2rem;
 }
