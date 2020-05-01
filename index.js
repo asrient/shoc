@@ -8,6 +8,9 @@ const common = require('./common.js');
 const login = require('./paths/login.js');
 const _login = require('./paths/_login.js');
 const _logout = require('./paths/_logout.js');
+const account = require('./paths/account.js');
+
+require('./houseKeeping.js');
 
 const port = process.env.PORT || 2000;
 
@@ -35,11 +38,10 @@ app.use(function (req, res, next) {
         next();
     }
     else {
-        console.log("finding student..");
-        common.users.findOne({ ticket: req.cookies.ticket }, 'enroll', (err, rec) => {
-            console.log("student rec",rec);
+        common.users.findOne({ ticket: req.cookies.ticket }, (err, rec) => {
             if(rec!=null){
                 res.enroll=rec.enroll;
+                res.name=rec.name;
             }
             next();
         })
@@ -52,6 +54,7 @@ app.get('/', function (req, res) {
 app.use(login);
 app.use(_login);
 app.use(_logout);
+app.use(account);
 
 app.use(function (req, res) {
     res.sendFile(__dirname + '/pages/404.html');
