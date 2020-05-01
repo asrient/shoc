@@ -4,7 +4,10 @@ const path = require('path');
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 
+const common = require('./common.js');
 const login = require('./paths/login.js');
+const _login = require('./paths/_login.js');
+const _logout = require('./paths/_logout.js');
 
 const port = process.env.PORT || 2000;
 
@@ -25,21 +28,30 @@ app.disable('x-powered-by');
 app.use(cookieParser());
 app.set('view engine', 'ejs');
 
+app.use(function (req, res, next) {
+    //console.log(req.cookies);
+    res.enroll = null;
+    if (req.cookies.ticket == undefined) {
+        next();
+    }
+    else {
+        console.log("finding student..");
+        common.users.findOne({ ticket: req.cookies.ticket }, 'enroll', (err, rec) => {
+            console.log("student rec",rec);
+            if(rec!=null){
+                res.enroll=rec.enroll;
+            }
+            next();
+        })
+    }
+});
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/pages/home.html');
 });
-/*app.post('/post', function (reqq, ress) {
-    var key = reqq.body.key;
-    if (key != process.env.key) {
-         ress.send("😛");
-    }
-   else{
-     tweet();
-    ress.sendFile(path.join(__dirname + '/done.html'));
-   }
-  });*/
 
-  app.use(login);
+app.use(login);
+app.use(_login);
+app.use(_logout);
 
 app.use(function (req, res) {
     res.sendFile(__dirname + '/pages/404.html');

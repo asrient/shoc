@@ -314,6 +314,43 @@ button {
   flex-direction: column;
 }
 
+.callout{
+  border:solid 2px var(--primary);
+  background-color: rgba(136, 136, 136, 0.274);
+  color:var(--primary);
+  border-radius: 0.5rem;
+  margin: 1rem 0.5rem;
+  padding: 0.5rem 0.6rem;
+  width: 100%;
+  max-width: 35rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.callout.red{
+  border-color: var(--red);
+  background-color: rgba(250, 0, 0, 0.2);
+  color:var(--red);
+}
+
+.callout.blue{
+  border-color: var(--blue);
+  background-color: rgba(0, 162, 255, 0.2);
+  color:var(--blue);
+}
+
+.callout.green{
+  border-color: var(--green);
+  background-color: rgba(200, 255, 218, 0.2);
+  color:var(--green);
+}
+
+.callout.orange{
+  border-color: var(--orange);
+  background-color: rgba(255, 136, 0, 0.2);
+  color:var(--orange);
+}
+
 .container {
   width: 100%;
   padding-right: 15px;
@@ -392,7 +429,6 @@ button {
   margin: 0.2rem;
   border: none;
   background: var(--tertiary);
-  color: var(--secondary);
   cursor: pointer;
   transition-property: all;
   transition-duration: 100ms;
@@ -496,7 +532,7 @@ button {
 
 .button.bordered {
   border-style: solid;
-  border-width: 0.1rem;
+  border-width: 0.06rem;
   color: var(--blue);
   border-color: var(--blue);
   background: none;

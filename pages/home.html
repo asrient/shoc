@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/common.css" />
     <link rel="stylesheet" type="text/css" href="/home.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script type="text/javascript" src="components.js"></script>
     <script type="text/javascript" src="home.js"></script>
     <title>Sen House of Children</title>
@@ -12,17 +13,19 @@
   </head>
   <body>
     <x-navbar active="/" position="fixed"></x-navbar>
-  <div id="hero1" class="center">
+  <div id="hero" class="center">
     <div>
-      <div class="size-xxl ink-white base-regular"  style="opacity:0.8;">SEN HOUSE OF CHILDREN</div> 
+      <div class="size-xxl ink-white base-regular" style="opacity:0.8;">
+        SEN HOUSE OF CHILDREN
+      </div> 
     </div>
   </div>  
   <din id="sec">
   <div id="sec1" class="center">
   <div style="max-width: 40rem;">
-     <div  class="size-xl ink-primary base-light center">Excellence & care. For each and every student.</div>
+     <div  class="size-xl ink-primary base-light center" data-aos="fade-up">Excellence & care. For each and every student.</div>
      <br/>
-  <div class="size-s ink-secondary center">
+  <div class="size-s base-semilight ink-grey center" data-aos="fade-up">
     SHOC offers a home-away-from-home atmosphere that makes children feel comfortable and helps them explore freely.
     Within this safe environment we provide a developmental curriculum.
      This means that planning is done through a process of observing the children,
@@ -32,11 +35,30 @@
   </div>
 </div>
 <div id="sec2">
-  <div class="size-xl ink-primary base-light center">Programs offered here</div>
+  <div class="size-xl ink-primary base-light center" data-aos="fade-up">Programs offered here</div>
+  <br/>
+  <div id="cards" class="center">
+  <div class="card center-col" data-aos="fade-up">
+  <div class="ink-primary size-m base-semilight">Preparatory</div>
+  <div>Age 2+</div>
+  </div>
+  <div class="card center-col" data-aos="fade-up">
+    <div class="ink-primary size-m base-semilight">Lower Nursery</div>
+    <div>Age 3+</div>
+    </div>
+    <div class="card center-col" data-aos="fade-up">
+      <div class="ink-primary size-m base-semilight">Upper Nursery</div>
+      <div>Age 4+</div>
+      </div>
+  </div>
   <br/>
 </div>  
 </din>
 
 <x-footer></x-footer>
   </body>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </html>

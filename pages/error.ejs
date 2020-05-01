@@ -6,19 +6,21 @@
     <title>🎃</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<link rel="stylesheet" href="/common.css" type="text/css">
+    <script type="text/javascript" src="components.js"></script>
 </head>
-
 <body>
     <br/>
     <br/>
-    <div class="center" id="hero">👏</div>
-	<div class="center size-l ink-green base-light">Shit Posted!</div>
+    <div class="center ink-primary size-l base-semibold" id="hero">Something went wrong</div>
+    <br/>
+	<div class="callout red"><%= message %></div>
 </body>
 
 </html>
 <style>
     body{
         min-height: 100vh;
+        padding:1rem;
     }
     #hero{
         font-size: 2.5rem;

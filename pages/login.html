@@ -1,15 +1,45 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/common.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="components.js"></script>
-    <title>Login - Sen House of Children</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  </head>
-  <body>
-    <x-navbar active="/account" ></x-navbar>
-    <x-footer></x-footer>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/common.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="components.js"></script>
+  <title>Login - Sen House of Children</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+
+<body>
+  <x-navbar active="/account" position="fixed"></x-navbar>
+  <div id="bdy" class="center-col" style="width:100%">
+    <div class="size-l ink-primary base-light">Parent Log In</div>
+    <br />
+    <form action="/_login" method="POST" class="center-col" style="width:100%">
+      <input placeholder="Admission No" id="inp" name="enroll">
+      <input type="submit" style="display: none;" id="send" placeholder="Send">
+      <label for="send" style="width:7rem;margin-top:0.5rem" class="center">
+        <div class="button rounded secondary ink-blue strech">Log In</div>
+      </label>
+    </form>
+  </div>
+  <x-footer></x-footer>
+</body>
+
 </html>
+<style>
+  #bdy {
+    min-height: 80vh;
+    background-image: url(/images/bk.png);
+  }
+
+  #inp {
+    margin: 0px;
+    background: var(--tertiary);
+    color: var(--primary);
+    border-radius: 2rem;
+    border: none;
+    padding: 0.6rem 1rem;
+    width: 13rem;
+  }
+</style>

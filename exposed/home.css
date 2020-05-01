@@ -1,24 +1,44 @@
-body{
+body {
     min-height: 100vh;
 }
-#hero1{
+
+#hero {
     height: 27rem;
     max-height: 90vh;
     width: 100%;
     padding: 1rem;
     background-color: rgb(197, 197, 197);
-    background-image: url(/images/hero2.jpg);
+    background-image: url(/images/hero1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    -webkit-transition: background-image 1s ease-in-out;
+    transition: background-image 1s ease-in-out;
 }
-#sec{
+
+#sec {
     display: block;
-    background-image:url(/images/bk.png);
+    background-image: url(/images/bk.png);
 }
-#sec1{
-    padding:2rem;
+
+#sec1 {
+    padding: 2rem;
 }
-#sec2{
-    padding:2rem;
+
+#sec2 {
+    padding: 2rem;
+}
+
+#cards {
+    width: 100%;
+    flex-flow: wrap;
+}
+
+.card {
+    width: 100%;
+    padding: 3rem 2rem;
+    margin: 1rem;
+    background-color: var(--tertiary);
+    border-radius: 0.4rem;
+    max-width: 20rem;
 }

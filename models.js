@@ -36,7 +36,8 @@ let fee = new mongoose.Schema({
     month: Number,
     type: String,
     status: String,
-    init_on: Number
+    init_on: Number,
+    via: String
 })
 
 const fees = mongoose.model('fees', fee);
