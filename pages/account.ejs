@@ -14,15 +14,7 @@
 <body>
   <x-navbar active="/account" position="fixed"></x-navbar>
   <div id="bdy">
-    <div id="pannel">
-      <div>
-        <div class="ink-primary base-light size-l"><%= name %></div>
-        <div class="ink-grey base-light size-xs"><%= enroll %></div>
-      </div>
-      <div id="logout" class="center">
-        <div id="b-logout" class="button grey rounded">Logout</div>
-      </div>
-    </div>
+    <%- include('pannel', {name,enroll}); %>
     <div id="cards" class="center" data-aos="fade-up">
       <div class="card center-col" id="b-fees">
         <img class="icon size-xxl" src="/icons/fees.png" />
@@ -44,36 +36,26 @@
 
 <script>
   document.getElementById("b-fees").addEventListener("click", function () {
-    window.location.href = "/payfees";
+    window.location.href = "/fees";
   })
   document.getElementById("b-notice").addEventListener("click", function () {
     window.location.href = "/notice";
-  })
-  document.getElementById("b-logout").addEventListener("click", function () {
-    window.location.href = "/_logout";
   })
 </script>
 
 </html>
 <style>
   #bdy {
-    min-height: 100vh;
+    min-height: 85vh;
     width: 100%;
     background-image: url(/images/bk.png);
-  }
-
-  #pannel {
-    padding: 1rem;
-    padding-top: 4rem;
-    background-color: var(--tertiary);
-    display: grid;
-    grid-template-columns: auto 5rem;
   }
 
   #cards {
     width: 100%;
     flex-flow: wrap;
     padding-top: 2rem;
+    padding-bottom: 1rem;
   }
 
   .card {
@@ -88,11 +70,5 @@
 
   .card:hover {
     opacity: 0.9;
-  }
-
-  @media(min-width: 700px) {
-    #pannel {
-      grid-template-columns: auto 7rem;
-    }
   }
 </style>

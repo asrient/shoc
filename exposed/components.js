@@ -27,7 +27,7 @@ class NavBar extends HTMLElement {
             links: [
                 { name: "Home", url: "/" },
                 { name: "Gallery", url: "/gallery" },
-                { name: "Pay fees", url: "/payfees" },
+                { name: "Pay fees", url: "/fees" },
                 { name: "Notice", url: "/Notice" },
                 { name: "Contact us", url: "/contactus" },
                 { name: "Account", url: "/account" },

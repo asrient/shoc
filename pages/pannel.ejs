@@ -1,0 +1,30 @@
+<div id="pannel">
+    <div>
+        <div class="ink-primary base-light size-l"><%= name %></div>
+        <div class="ink-grey base-light size-xs"><%= enroll %></div>
+    </div>
+    <div id="logout" class="center">
+        <div id="b-logout" class="button bg ink-grey rounded">Logout</div>
+    </div>
+</div>
+
+<style>
+    #pannel {
+        padding: 1rem;
+        padding-top: 4rem;
+        background-color: var(--tertiary);
+        display: grid;
+        grid-template-columns: auto 5rem;
+    }
+
+    @media(min-width: 700px) {
+        #pannel {
+            grid-template-columns: auto 7rem;
+        }
+    }
+</style>
+<script>
+    document.getElementById("b-logout").addEventListener("click", function () {
+        window.location.href = "/_logout";
+    })
+</script>

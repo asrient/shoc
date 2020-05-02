@@ -34,7 +34,6 @@ let fee = new mongoose.Schema({
     ac_year: Number,
     amount: Number,
     month: Number,
-    type: String,
     status: String,
     init_on: Number,
     via: String

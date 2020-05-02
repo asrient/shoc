@@ -15,7 +15,17 @@
   <div id="bdy" class="center-col" style="width:100%">
     <div class="size-l ink-primary base-light">Parent Log In</div>
     <br />
-    <form action="/_login" method="POST" class="center-col" style="width:100%">
+    <form action=<%  if(next!=undefined){
+      %>
+      "/_login?next=<%= next %>"
+      <%
+      }
+      else{
+         %>
+      "/_login"
+      <%
+      }
+     -%> method="POST" class="center-col" style="width:100%">
       <input placeholder="Admission No" id="inp" name="enroll">
       <input type="submit" style="display: none;" id="send" placeholder="Send">
       <label for="send" style="width:7rem;margin-top:0.5rem" class="center">

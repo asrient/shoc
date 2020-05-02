@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/common.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="components.js"></script>
+  <title>Pay - Sen House of Children</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+
+<body>
+  <x-navbar active="/fees" position="fixed"></x-navbar>
+  <div id="bdy">
+    <%- include('pannel', {name,enroll}); %>
+    <br/>
+  <div class="container">
+   <%= orderId %>
+  </div>
+  </div>
+  <x-footer></x-footer>
+</body>
+
+</html>
+<style>
+  #bdy {
+    min-height: 85vh;
+    width: 100%;
+    background-image: url(/images/bk.png);
+  }
+
+</style>

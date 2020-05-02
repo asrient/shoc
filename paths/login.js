@@ -13,8 +13,9 @@ app.get('/login', (req, res) => {
     else
       res.redirect('/account');
   }
-  else
-    res.sendFile(common.baseDir + '/pages/login.html');
+  else{
+    res.render('login',{next:req.query.next});
+  }
 })
 
 module.exports = app;
