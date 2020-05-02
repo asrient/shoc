@@ -315,7 +315,7 @@ button {
 }
 
 .callout{
-  border:solid 2px var(--primary);
+  border:solid 1px var(--primary);
   background-color: rgba(136, 136, 136, 0.274);
   color:var(--primary);
   border-radius: 0.5rem;
@@ -517,7 +517,7 @@ button {
 }
 
 .button.bg {
-  background: var(--primary);
+  background: var(--bg);
   font-weight: 500;
 }
 

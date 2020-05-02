@@ -15,21 +15,25 @@
   <x-navbar active="/account" position="fixed"></x-navbar>
   <div id="bdy">
     <div id="pannel">
-      <div class="ink-primary base-light size-l"><%= name %></div>
-      <div class="ink-grey base-light size-xs"><%= enroll %></div>
+      <div>
+        <div class="ink-primary base-light size-l"><%= name %></div>
+        <div class="ink-grey base-light size-xs"><%= enroll %></div>
+      </div>
+      <div id="logout" class="center">
+        <div id="b-logout" class="button grey rounded">Logout</div>
+      </div>
     </div>
     <div id="cards" class="center" data-aos="fade-up">
       <div class="card center-col" id="b-fees">
-        <img class="icon size-xxl" src="/icons/fees.png"/>
+        <img class="icon size-xxl" src="/icons/fees.png" />
         <div class="ink-primary size-m base-semilight" style="padding-top:0.6rem">Fees</div>
       </div>
       <div class="card center-col" id="b-notice">
-        <img class="icon size-xxl" src="/icons/notice.svg"/>
+        <img class="icon size-xxl" src="/icons/notice.svg" />
         <div class="ink-primary size-m base-semilight" style="padding-top:0.6rem">Notice board</div>
       </div>
     </div>
 
-    <div id="logout" class="center"><div id="b-logout" class="button tertiary ink-red rounded">Logout</div></div>
   </div>
   <x-footer></x-footer>
 </body>
@@ -39,14 +43,14 @@
 </script>
 
 <script>
-  document.getElementById("b-fees").addEventListener("click",function(){
-    window.location.href="/payfees";
+  document.getElementById("b-fees").addEventListener("click", function () {
+    window.location.href = "/payfees";
   })
-  document.getElementById("b-notice").addEventListener("click",function(){
-    window.location.href="/notice";
+  document.getElementById("b-notice").addEventListener("click", function () {
+    window.location.href = "/notice";
   })
-  document.getElementById("b-logout").addEventListener("click",function(){
-    window.location.href="/_logout";
+  document.getElementById("b-logout").addEventListener("click", function () {
+    window.location.href = "/_logout";
   })
 </script>
 
@@ -62,6 +66,8 @@
     padding: 1rem;
     padding-top: 4rem;
     background-color: var(--tertiary);
+    display: grid;
+    grid-template-columns: auto 5rem;
   }
 
   #cards {
@@ -79,19 +85,14 @@
     max-width: 20rem;
     cursor: pointer;
   }
-  .card:hover{
+
+  .card:hover {
     opacity: 0.9;
   }
-  #logout{
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-  }
-  @media(max-width: 700px){
-    #logout{
-    position: relative;
-    bottom: 0px;
-    padding-bottom: 1rem;
-  }
+
+  @media(min-width: 700px) {
+    #pannel {
+      grid-template-columns: auto 7rem;
+    }
   }
 </style>
