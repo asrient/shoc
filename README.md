@@ -1,7 +1,7 @@
 # shoc
  School Server
 
-##env variables
+## env variables
 * DB_URL= String
 * AC_YEAR= Number
 * ACCEPTING_MONTHS= String(Number + "," + Number)
