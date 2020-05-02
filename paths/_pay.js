@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router;
 const common = require('../common.js');
+const paytm = require('../paytm/checksum.js');
 
 let app = Router();
 
@@ -13,11 +14,51 @@ function getAcceptingMonths() {
   return arr;
 }
 
-function genarateOrder(enroll, month, amt, cb) {
-  const orderId = common.code(10);
-  cb(orderId);  //
+function generateHash(payload, cb) {
+  paytm.genchecksum(payload, process.env.MERCHANT_KEY, function (err, checksum) {
+    cb(checksum);
+  });
 }
 
+function genarateOrder(enroll, month, amt, cb) {
+  const orderId = 'ORDER_' + common.code(6);
+  const ac_year = process.env.AC_YEAR;
+  var custId = '';
+  const init_on = common.time();
+  enroll.split('/').forEach((chunk, ind) => {
+    if (ind) {
+      custId += '_';
+    }
+    custId += chunk;
+  })
+  const payload = {
+    "MID": process.env.MID,
+    "WEBSITE": process.env.WEBSITE,
+    "INDUSTRY_TYPE_ID": process.env.INDUSTRY_TYPE_ID,
+    "CHANNEL_ID": process.env.CHANNEL_ID,
+    "ORDER_ID": orderId,
+    "CUST_ID": custId,
+    "TXN_AMOUNT": amt,
+    "CALLBACK_URL": process.env.CALLBACK_URL,
+  };
+  generateHash(payload, (hash) => {
+    var fee = new common.fees({
+      enroll,
+      cust_id: custId,
+      init_on,
+      order_id: orderId,
+      status: 'WAITING',
+      month,
+      received_amount: 0,
+      required_amount: amt,
+      ac_year,
+      mode: 'ONLINE'
+    });
+    fee.save((err) => {
+      cb(payload, hash);  //
+    });
+  })
+}
 
 app.get('/_pay', (req, res) => {
   if (res.enroll != null) {
@@ -28,14 +69,22 @@ app.get('/_pay', (req, res) => {
         const ac_year = process.env.AC_YEAR;
         const monthly_fees = process.env.MONTHLY_FEES;
         const admission_fees = process.env.ADMISSION_FEES;
-        common.fees.findOne({ enroll: res.enroll, ac_year, month: payMonth,status:'PAYED' }).exec((err, rec) => {
+        common.fees.findOne({ enroll: res.enroll, ac_year, month: payMonth, status: 'PAID' }).exec((err, rec) => {
           if (rec == null) {
             var payAmt = monthly_fees;
             if (payMonth == 0) {
               payAmt = admission_fees;
             }
-            genarateOrder(res.enroll, payMonth, payAmt, (orderId) => {
-              res.render('pay', { enroll: res.enroll, name: res.name, orderId })   //
+            genarateOrder(res.enroll, payMonth, payAmt, (payload, hash) => {
+              res.render('pay', {
+                enroll: res.enroll,
+                name: res.name,
+                payload,
+                hash,
+                payName: common.months[payMonth] + ' fees',
+                amount: payAmt,
+                url: process.env.TRANSACTION_URL
+              })   //
             })
           }
           else

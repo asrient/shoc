@@ -29,14 +29,17 @@ const users = mongoose.model('users', user);
 
 let fee = new mongoose.Schema({
     enroll: String,
-    payed_on: Number,
+    paid_on: Number,
     order_id: String,
+    cust_id:String,
+    details:Object,
     ac_year: Number,
-    amount: Number,
+    required_amount:Number,
+    received_amount: Number,
     month: Number,
     status: String,
     init_on: Number,
-    via: String
+    mode: String
 })
 
 const fees = mongoose.model('fees', fee);

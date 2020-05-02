@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="/common.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript" src="components.js"></script>
-  <title>Pay - Sen House of Children</title>
+  <title>Payment Status - Sen House of Children</title>
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 </head>
 
@@ -17,26 +17,18 @@
     <br/>
     <br/>
   <div class="container center-col">
-   <div class="ink-primary size-m base-semiight"><%= payName %></div>
-   <div class="ink-red size-s base-regular">₹ <%= amount %></div>
+   <div class="ink-primary size-m base-semiight">Payment Successful!</div>
+   <div class="ink-green size-s base-regular">₹ <%= amount %></div>
    <br/>
-   <form method="post" action="<%=url%>" name="paytm">
-    <%for(var x in payload){%>
-			<input type="hidden" name="<%=x%>" value="<%=payload[x]%>">
-		<%}%>
-          <input type="hidden" name="CHECKSUMHASH" value="<%=hash%>">
- </form>
- <div><div id="done" class="button green rounded">Proceed To Pay</div></div>
+   <div class="ink-blue size-xs base-semiight"><%= orderId %></div>
+   <br/>
+   <br/>
+ <div class="center"><a id="done" href="/fees" class="button rounded">Done</a></div>
   </div>
   <br/>
   </div>
   <x-footer></x-footer>
 </body>
-<script type="text/javascript">
-  document.getElementById("done").addEventListener("click",function(){
-  document.paytm.submit();  
-  })
-</script>
 </html>
 <style>
   #bdy {
@@ -44,5 +36,4 @@
     width: 100%;
     background-image: url(/images/bk.png);
   }
-
 </style>

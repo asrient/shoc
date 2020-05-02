@@ -11,6 +11,7 @@ const _logout = require('./paths/_logout.js');
 const account = require('./paths/account.js');
 const fees = require('./paths/fees.js');
 const _pay = require('./paths/_pay.js');
+const _callback = require('./paths/_callback.js');
 
 require('./houseKeeping.js');
 
@@ -59,6 +60,7 @@ app.use(_logout);
 app.use(account);
 app.use(fees);
 app.use(_pay);
+app.use(_callback);
 
 app.use(function (req, res) {
     res.sendFile(__dirname + '/pages/404.html');

@@ -26,7 +26,7 @@ function dueObj(month) {
 
 function historyObj(doc) {
   var color='red';
-  if(doc.status=='PAYED'){
+  if(doc.status=='PAID'){
     color='green'
   }
   else if(doc.status=='WAITING'){
@@ -34,9 +34,9 @@ function historyObj(doc) {
   }
   return { month: doc.month,
      name: common.months[doc.month]+' fees', 
-     amount: doc.amount, 
+     amount: doc.received_amount, 
      status: doc.status,
-     date:new Date(doc.payed_on).toLocaleDateString(),
+     date:new Date(doc.init_on).toLocaleDateString(),
      via:doc.via,
      order_id:doc.order_id,
      color
@@ -53,7 +53,7 @@ app.get('/fees', (req, res) => {
       var history = [];
       var dueMonths = acceptingMonths;
       recs.forEach((rec) => {
-        if (rec.status == 'PAYED') {
+        if (rec.status == 'PAID') {
           var dInd = dueMonths.findIndex((due) => { return due == rec.month });
           if (dInd >= 0) {
             dueMonths.splice(dInd, 1);
