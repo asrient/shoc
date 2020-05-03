@@ -52,13 +52,13 @@ function getDetails(orderId, cb) {
     };
     // Set up the request
     var response = "";
-    var post_req = https.request(options,  (post_res)=> {
+    var post_req = https.request(options, (post_res) => {
       post_res.on('data', function (chunk) {
         response += chunk;
       });
 
-      post_res.on('end', ()=> {
-        var json=JSON.parse(response);
+      post_res.on('end', () => {
+        var json = JSON.parse(response);
         cb(json);
       });
     });
@@ -92,9 +92,11 @@ app.post('/_callback', (req, res) => {
                   if (data.STATUS == 'PENDING') {
                     res.render('error', { message: 'TRANSACTION STATUS: ' + data.status });
                   }
-                  else
+                  else {
+                    var title = "";
                     if (data.STATUS == 'TXN_SUCCESS') {
                       console.log("payment successful");
+                      title = "Payment Successful!";
                       const amt = parseInt(data.TXNAMOUNT);
                       const paidOn = common.time();
                       if (amt != fee.required_amount) {
@@ -106,11 +108,13 @@ app.post('/_callback', (req, res) => {
                       fee.details = data;
                     }
                     else if (data.STATUS == 'TXN_FAILURE') {
+                      title = "Payment Failed!";
                       fee.status = 'FAILED';
                     }
-                  fee.save((err) => {
-                    res.render('callback', { enroll: res.enroll, name: res.name, orderId, amount: fee.received_amount })//
-                  })
+                    fee.save((err) => {
+                      res.render('callback', { enroll: res.enroll, name: res.name, title, orderId, amount: fee.received_amount })//
+                    })
+                  }
                 })
               }
             }
