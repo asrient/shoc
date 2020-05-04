@@ -12,6 +12,7 @@ const account = require('./paths/account.js');
 const fees = require('./paths/fees.js');
 const _pay = require('./paths/_pay.js');
 const _callback = require('./paths/_callback.js');
+const notice = require('./paths/notice.js');
 
 require('./houseKeeping.js');
 
@@ -53,6 +54,12 @@ app.use(function (req, res, next) {
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/pages/home.html');
 });
+app.get('/contactus', function (req, res) {
+    res.sendFile(__dirname + '/pages/contactUs.html');
+});
+app.get('/gallery', function (req, res) {
+    res.sendFile(__dirname + '/pages/gallery.html');
+});
 
 app.use(login);
 app.use(_login);
@@ -61,6 +68,7 @@ app.use(account);
 app.use(fees);
 app.use(_pay);
 app.use(_callback);
+app.use(notice);
 
 app.use(function (req, res) {
     res.sendFile(__dirname + '/pages/404.html');

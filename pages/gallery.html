@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/common.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="components.js"></script>
+  <title>Gallery - Sen House of Children</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+
+<body>
+  <x-navbar active="/gallery" position="fixed"></x-navbar>
+  <div id="bdy" style="width:100%">
+    <br/>
+    <br/>
+    <br/>
+    <div id="grid">
+      <img class="photo" src="/images/hero1.jpg">
+      <img class="photo" src="/images/hero2.jpg">
+      <img class="photo" src="/images/hero3.jpg">
+      <img class="photo" src="/images/hero4.jpg">
+      <img class="photo" src="/images/hero5.jpg">
+      <img class="photo" src="/images/hero6.jpg">
+    </div>
+<br/>
+  </div>
+  <x-footer></x-footer>
+</body>
+
+</html>
+<style>
+  #bdy {
+    min-height: 80vh;
+    background-image: url(/images/bk.png);
+  }
+  .photo{
+    background-color: var(--tertiary);
+    border-radius: 0.3rem;
+    width: 19rem;
+    height: auto;
+    min-height: 14rem;
+    border: none;
+    margin: 1.5rem;
+  }
+  @media(max-width:600px){
+    .photo{
+      width: 90vw;
+    }
+  }
+#grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill,minmax(20rem, 1fr));
+    grid-column-gap: 0.5rem;
+}
+</style>

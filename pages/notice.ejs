@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/common.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script type="text/javascript" src="components.js"></script>
+  <title>Notice board - Sen House of Children</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+
+<body>
+  <x-navbar active="/notice" position="fixed"></x-navbar>
+  <div id="bdy" style="width:100%">
+    <br/>
+    <br/>
+    <br/>
+    <div class="container">
+    <div class="size-xl ink-primary base-regular">Notice Board</div>
+    <br />
+    <% if(data.length){ 
+     data.forEach((notice)=>{%>
+      <div class="notice"  data-aos="fade-up">
+        <div class="size-xs ink-grey base-semilight"><%= notice.date %></div>
+        <div class="size-m ink-secondary base-semilight"><%= notice.title %></div>
+        <br/>
+        <div class="size-s ink-grey base-regular"><%- notice.text %></div>
+      </div>
+    <% }) 
+     }
+     else{ %>
+      <div class="size-s ink-grey base-semilight center">No new notices</div>
+    <% } %>
+  </div>
+  <br/>
+</div>
+  <x-footer></x-footer>
+</body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</html>
+<style>
+  #bdy {
+    min-height: 80vh;
+    background-image: url(/images/bk.png);
+  }
+.notice{
+  background-color: var(--tertiary);
+  border-radius: 0.4rem;
+  padding: 1.2rem 1rem;
+  margin: 0.6rem 0rem;
+}
+  #inp {
+    margin: 0px;
+    background: var(--tertiary);
+    color: var(--primary);
+    border-radius: 2rem;
+    border: none;
+    padding: 0.6rem 1rem;
+    width: 13rem;
+  }
+</style>

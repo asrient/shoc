@@ -27,9 +27,9 @@ class NavBar extends HTMLElement {
             links: [
                 { name: "Home", url: "/" },
                 { name: "Gallery", url: "/gallery" },
-                { name: "Pay fees", url: "/fees" },
-                { name: "Notice", url: "/Notice" },
+                { name: "Notice", url: "/notice" },
                 { name: "Contact us", url: "/contactus" },
+                { name: "Pay fees", url: "/fees" },
                 { name: "Account", url: "/account" },
             ],
             isexpanded: false,
@@ -238,7 +238,7 @@ class Footer extends HTMLElement {
         <div class="center">
           <div style="width:100%;padding:2rem 0.5rem;padding-top:0;max-width:40rem;" class="hstack space-around size-xs">
             <a href="https://goo.gl/maps/Gh3MknQsfxZT5sRQA">Visit</a>
-            <a href="tel:8334009522">Call</a>
+            <a href="tel:8017665988">Call</a>
             <a href="mailto:senhouse@gmail.com">Email</a>
             <a href="https://fb.com/senhouseofchildren">Facebook</a>
          </div>
