@@ -240,7 +240,7 @@ class Footer extends HTMLElement {
             <a href="https://goo.gl/maps/Gh3MknQsfxZT5sRQA">Visit</a>
             <a href="tel:8017665988">Call</a>
             <a href="mailto:senhouse@gmail.com">Email</a>
-            <a href="https://fb.com/senhouseofchildren">Facebook</a>
+            <a href="/policies">Policies</a>
          </div>
          </div>
        </div>`;

@@ -61,6 +61,22 @@ app.get('/gallery', function (req, res) {
     res.sendFile(__dirname + '/pages/gallery.html');
 });
 
+app.get('/privacy', function (req, res) {
+    res.sendFile(__dirname + '/pages/privacy.html');
+});
+app.get('/terms', function (req, res) {
+    res.sendFile(__dirname + '/pages/t&c.html');
+});
+app.get('/refund', function (req, res) {
+    res.sendFile(__dirname + '/pages/refund.html');
+});
+app.get('/disclaimer', function (req, res) {
+    res.sendFile(__dirname + '/pages/disclaimer.html');
+});
+app.get('/policies', function (req, res) {
+    res.sendFile(__dirname + '/pages/policies.html');
+});
+
 app.use(login);
 app.use(_login);
 app.use(_logout);
