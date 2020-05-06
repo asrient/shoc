@@ -1,7 +1,10 @@
+<% if(cls=='Lower'||cls=='Upper'){
+    cls+=' Nursery';
+} %>
 <div id="pannel">
     <div>
         <div class="ink-primary base-light size-l"><%= name %></div>
-        <div class="ink-grey base-light size-xs"><%= enroll %></div>
+        <div class="ink-grey base-light size-xs"><%= cls %>&nbsp;&nbsp;<%= enroll %></div>
     </div>
     <div id="logout" class="center">
         <div id="b-logout" class="button bg ink-grey rounded">Logout</div>

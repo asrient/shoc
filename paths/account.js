@@ -6,7 +6,7 @@ let app = Router();
 
 app.get('/account', (req, res) => {
   if (res.enroll != null) {
-    res.render('account', { enroll: res.enroll, name: res.name })
+    res.render('account', { enroll: res.enroll, name: res.name, cls: res.class })
   }
   else
     res.redirect('/login');

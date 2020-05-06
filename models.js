@@ -22,6 +22,7 @@ let user = new mongoose.Schema({
     enroll: String,
     expires_on: Number,
     name: String,
+    class: String,
     ticket: String
 })
 

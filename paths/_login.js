@@ -17,8 +17,8 @@ app.post('/_login', (req, res) => {
         if (stud != null) {
           const ticket = common.code(18);
           const expires = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
-          var user = new common.users({ enroll: stud.enroll, name: stud.name, ticket, expires_on: expires });
-          user.save(function (err) {
+          var user = new common.users({ enroll: stud.enroll, name: stud.name, class: stud.class, ticket, expires_on: expires });
+          user.save((err)=> {
             res.cookie('ticket', ticket, { expires });
             go();
           });

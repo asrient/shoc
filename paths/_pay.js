@@ -68,7 +68,13 @@ app.get('/_pay', (req, res) => {
       if (acceptingMonths.includes(payMonth)) {
         const ac_year = process.env.AC_YEAR;
         const monthly_fees = process.env.MONTHLY_FEES;
-        const admission_fees = process.env.ADMISSION_FEES;
+        var admission_fees = process.env.PREP_ADMISSION_FEES;
+        if (res.class == 'Lower') {
+          admission_fees = process.env.LOWER_ADMISSION_FEES;
+        }
+        else if (res.class == 'Upper') {
+          admission_fees = process.env.UPPER_ADMISSION_FEES;
+        }
         common.fees.findOne({ enroll: res.enroll, ac_year, month: payMonth, status: 'PAID' }).exec((err, rec) => {
           if (rec == null) {
             var payAmt = monthly_fees;
@@ -79,6 +85,7 @@ app.get('/_pay', (req, res) => {
               res.render('pay', {
                 enroll: res.enroll,
                 name: res.name,
+                cls: res.class,
                 payload,
                 hash,
                 payName: common.months[payMonth] + ' fees',

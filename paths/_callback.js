@@ -85,7 +85,7 @@ app.post('/_callback', (req, res) => {
               if (fee.status == 'PAID') {
                 //fee already paid
                 console.log("fee already paid!");
-                res.render('callback', { enroll: res.enroll, name: res.name, orderId, amount: fee.received_amount })//
+                res.render('callback', { enroll: res.enroll, name: res.name, cls: res.class, orderId, amount: fee.received_amount })//
               }
               else {
                 getDetails(orderId, (data) => {

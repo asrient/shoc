@@ -46,6 +46,7 @@ app.use(function (req, res, next) {
             if(rec!=null){
                 res.enroll=rec.enroll;
                 res.name=rec.name;
+                res.class=rec.class;
             }
             next();
         })

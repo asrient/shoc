@@ -6,7 +6,9 @@
 * AC_YEAR= Number
 * ACCEPTING_MONTHS= String(Number + "," + Number)
 * MONTHLY_FEES= Number
-* ADMISSION_FEES= Number
+* PREP_ADMISSION_FEES= Number
+* LOWER_ADMISSION_FEES= Number
+* UPPER_ADMISSION_FEES= Number
 * MID= String
 * WEBSITE= String
 * CHANNEL_ID= String

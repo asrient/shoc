@@ -13,34 +13,41 @@ function getAcceptingMonths() {
   return arr;
 }
 
-function dueObj(month) {
+function dueObj(cls, month) {
   const ac_year = process.env.AC_YEAR;
   const monthly_fees = process.env.MONTHLY_FEES;
-  const admission_fees = process.env.ADMISSION_FEES;
+  var admission_fees = process.env.PREP_ADMISSION_FEES;
+  if (cls == 'Lower') {
+    admission_fees = process.env.LOWER_ADMISSION_FEES;
+  }
+  else if (cls == 'Upper') {
+    admission_fees = process.env.UPPER_ADMISSION_FEES;
+  }
   var payAmt = monthly_fees;
   if (month == 0) {
     payAmt = admission_fees;
   }
-  return { month, name: common.months[month]+' fees', amount: payAmt, url: '/_pay?month=' + month };
+  return { month, name: common.months[month] + ' fees', amount: payAmt, url: '/_pay?month=' + month };
 }
 
 function historyObj(doc) {
-  var color='red';
-  if(doc.status=='PAID'){
-    color='green'
+  var color = 'red';
+  if (doc.status == 'PAID') {
+    color = 'green'
   }
-  else if(doc.status=='WAITING'){
-    color='orange';
+  else if (doc.status == 'WAITING') {
+    color = 'orange';
   }
-  return { month: doc.month,
-     name: common.months[doc.month]+' fees', 
-     amount: doc.received_amount, 
-     status: doc.status,
-     date:new Date(doc.init_on).toLocaleDateString(),
-     via:doc.via,
-     order_id:doc.order_id,
-     color
-     };
+  return {
+    month: doc.month,
+    name: common.months[doc.month] + ' fees',
+    amount: doc.received_amount,
+    status: doc.status,
+    date: new Date(doc.init_on).toLocaleDateString(),
+    via: doc.via,
+    order_id: doc.order_id,
+    color
+  };
 }
 
 app.get('/fees', (req, res) => {
@@ -61,8 +68,8 @@ app.get('/fees', (req, res) => {
         }
         history.push(historyObj(rec));
       })
-      const dues = dueMonths.map((month) => { return dueObj(month) })
-      res.render('fees', { enroll: res.enroll, name: res.name, dues, history })
+      const dues = dueMonths.map((month) => { return dueObj(res.class, month) })
+      res.render('fees', { enroll: res.enroll, name: res.name, cls: res.class, dues, history })
     });
   }
   else
