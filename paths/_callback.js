@@ -112,7 +112,7 @@ app.post('/_callback', (req, res) => {
                       fee.status = 'FAILED';
                     }
                     fee.save((err) => {
-                      res.render('callback', { enroll: res.enroll, name: res.name, title, orderId, amount: fee.received_amount })//
+                      res.render('callback', { enroll: res.enroll, name: res.name, cls: res.class, title, orderId, amount: fee.received_amount })//
                     })
                   }
                 })
