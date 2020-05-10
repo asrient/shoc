@@ -74,6 +74,9 @@ app.get('/refund', function (req, res) {
 app.get('/disclaimer', function (req, res) {
     res.sendFile(__dirname + '/pages/disclaimer.html');
 });
+app.get('/aboutus', function (req, res) {
+    res.sendFile(__dirname + '/pages/aboutUs.html');
+});
 app.get('/policies', function (req, res) {
     res.sendFile(__dirname + '/pages/policies.html');
 });
