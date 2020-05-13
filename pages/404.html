@@ -1,33 +1,50 @@
 <!doctype html>
 <html>
-        <title>Page not found - SHOC</title>
-  <head>
+<title>Page not found - SHOC</title>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166351312-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166351312-1');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/common.css" />
     <script type="text/javascript" src="/components.js"></script>
-    </head>
-    <body>
-        <x-navbar position="fixed"></x-navbar>
-        <div id="main" class="center-col">
-            <div class="size-l base-semibold center ink-primary" id="txt">
-          The page you’re looking for can’t be found.
-            </div>
-         
+</head>
+
+<body>
+    <x-navbar position="fixed"></x-navbar>
+    <div id="main" class="center-col">
+        <div class="size-l base-semibold center ink-primary" id="txt">
+            The page you’re looking for can’t be found.
         </div>
-        <x-footer></x-footer>
-    </body>
+
+    </div>
+    <x-footer></x-footer>
+</body>
+
 </html>
 <style>
-    #menuGrid{
-    padding-left: 0.5rem;
-}
-    #main{
-        min-height: 100vh;
-        padding:1rem;
+    #menuGrid {
+        padding-left: 0.5rem;
     }
-#txt{
-    padding:6rem 0rem;
-    max-width: 30rem;
-}
+
+    #main {
+        min-height: 100vh;
+        padding: 1rem;
+    }
+
+    #txt {
+        padding: 6rem 0rem;
+        max-width: 30rem;
+    }
 </style>
