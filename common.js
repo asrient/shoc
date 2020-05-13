@@ -9,6 +9,20 @@ const fees = require('./models.js').fees;
 
 const baseDir = __dirname;
 
-const months=['Session & others','January','Febuary','March','April','May','June','July','August','September','October','November','December']
+const months = [
+    'Session & others',
+    'January',
+    'Febuary',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+]
 
 module.exports = { time, code, users, students, fees, baseDir, months };
