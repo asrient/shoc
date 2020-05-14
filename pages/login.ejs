@@ -52,9 +52,16 @@
 <style>
   #bdy {
     min-height: 80vh;
-    background-image: url(/images/bk.png);
+    background-image: url(/images/login-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
-
+  @media(min-width:700px){
+    #bdy{
+     background-image: url(/images/login-bg-l.jpg); 
+    }
+  }
   #inp {
     margin: 0px;
     background: var(--tertiary);

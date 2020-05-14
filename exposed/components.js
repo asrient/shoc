@@ -80,19 +80,21 @@ class NavBar extends HTMLElement {
         const css = `<style>
         .navbar {
             min-height: 1rem;
-            background-color: rgba(255, 255, 255, 0.77);
+            background-color: rgba(245, 245, 245, 0.77);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             flex-direction: row;
             align-items: center;
             top: 0px;
             overflow: hidden;
-            padding: 0.6rem;
+            padding: 0.8rem;
             color: rgb(255, 255, 255);
             font-size: 0.9rem;
             font-weight: 500;
             z-index:2;
             width:100%;
+            border-bottom: solid thin #00000012;
+            box-shadow: 0px 0px 5px 0px #00000070;
             position: ${pos};
         }
         
