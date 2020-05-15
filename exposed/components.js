@@ -128,8 +128,10 @@ class NavBar extends HTMLElement {
         #menu{
             padding: 0.8rem 1rem;
             flex-direction: column;
-            justify-content:center;
+            justify-content:space-around;
             background-color:white;
+            min-height:100vh;
+            overflow-y:auto;
         }
         .link {
             margin: 0rem 0.2rem;
@@ -176,6 +178,10 @@ class NavBar extends HTMLElement {
         @media(max-width:700px){
             #head{
                 grid-template-columns:auto 5rem;
+            }
+            .link {
+                font-weight:800;
+                font-size:2rem;
             }
         }
         #brnd{

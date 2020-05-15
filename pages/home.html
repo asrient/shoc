@@ -20,6 +20,8 @@
   <link rel="stylesheet" type="text/css" href="/home.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="/flickity.min.css">
+  <script src="/flickity.pkgd.min.js"></script>
   <script type="text/javascript" src="/components.js"></script>
   <script type="text/javascript" src="home.js"></script>
   <title>Sen House of Children</title>
@@ -29,17 +31,21 @@
 
 <body>
   <x-navbar active="/"></x-navbar>
-  <div id="hero" class="center">
-    <div>
-      <div class="size-xl ink-white base-regular" id="title" style="opacity:0.8;">
-        SEN HOUSE OF CHILDREN
-      </div>
-    </div>
+  <div class="main-carousel">
+    <div class="carousel-cell"><img src="/images/hero1.jpg" alt="orange tree" /></div>
+    <div class="carousel-cell"><img src="/images/hero2.jpg" alt="orange tree" /></div>
+    <div class="carousel-cell"><img src="/images/hero3.jpg" alt="orange tree" /></div>
+    <div class="carousel-cell"><img src="/images/hero4.jpg" alt="orange tree" /></div>
+    <div class="carousel-cell"><img src="/images/hero5.jpg" alt="orange tree" /></div>
+    <div class="carousel-cell"><img src="/images/hero6.jpg" alt="orange tree" /></div>
+    <div class="carousel-cell"><img src="/images/hero7.jpg" alt="orange tree" /></div>
+    <div class="carousel-cell"><img src="/images/hero8.jpg" alt="orange tree" /></div>
+    <div class="carousel-cell"><img src="/images/hero9.jpg" alt="orange tree" /></div>
   </div>
   <din id="sec">
     <div id="sec1" class="center">
       <div style="max-width: 40rem;">
-        <div class="size-xl ink-primary base-light center" data-aos="fade-up">Excellence & care. For each and every
+        <div class="ink-primary size-xxl base-bold center">Excellence & care. For each and every
           student.</div>
         <br />
         <div class="size-s base-semilight ink-grey center" data-aos="fade-up">
@@ -53,7 +59,7 @@
       </div>
     </div>
     <div id="sec2">
-      <div class="size-xl ink-primary base-light center" data-aos="fade-up">Programs offered here</div>
+      <div class="ink-primary size-xxl base-bold center" data-aos="fade-up">Programs offered here</div>
       <br />
       <div id="cards" class="center ink-light">
         <div class="card center-col" data-aos="fade-up" style="background: linear-gradient(45deg, rgb(0, 143, 81), rgb(114, 139, 0))">
@@ -72,12 +78,30 @@
       <br />
     </div>
   </din>
-
+  <div class="container links">
+    <div class="ink-primary size-xxl base-bold">Links</div>
+    <br/>
+    <a class="button rounded bordered orange" href="/fees">Pay Fees</a>
+    <a class="button rounded bordered blue" href="/notice">Notice Board</a>
+    <a class="button rounded bordered black" href="/contactus">Contact</a>
+  </div>
+  <br/>
+  <br/>
   <x-footer></x-footer>
 </body>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
   AOS.init();
+
+  $('.main-carousel').flickity({
+  cellAlign: 'center',
+  contain: true,
+  imagesLoaded: true,
+  percentPosition: false,
+  autoPlay: 2000,
+  pageDots: false,
+  wrapAround: true
+});
 </script>
 
 </html>
