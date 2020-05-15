@@ -3,8 +3,8 @@
 } %>
 <div id="pannel">
     <div>
-        <div class="ink-primary base-light size-l"><%= name %></div>
-        <div class="ink-grey base-light size-xs"><%= cls %>&nbsp;&nbsp;<%= enroll %></div>
+        <div class="ink-primary base-semilight size-l"><%= name %></div>
+        <div class="ink-secondary base-light size-xs">&nbsp;<%= cls %>&nbsp;&nbsp;<%= enroll %></div>
     </div>
     <div id="logout" class="center">
         <div id="b-logout" class="button bg ink-grey rounded">Logout</div>
@@ -15,7 +15,7 @@
     #pannel {
         padding: 1rem;
         padding-top: 4rem;
-        background-color: var(--tertiary);
+        background:linear-gradient(45deg,#e6e6fa,#e6f7fa);
         display: grid;
         grid-template-columns: auto 5rem;
     }
@@ -24,6 +24,10 @@
         #pannel {
             grid-template-columns: auto 7rem;
         }
+    }
+
+    [data-theme="dark"] #pannel{
+        background:linear-gradient(45deg,#5a007e,#00459e);
     }
 </style>
 <script>

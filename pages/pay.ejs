@@ -29,7 +29,7 @@
     <br/>
     <br/>
   <div class="container center-col">
-   <div class="ink-primary size-m base-semiight"><%= payName %></div>
+   <div class="ink-primary size-l base-semibold"><%= payName %></div>
    <div class="ink-red size-s base-regular">₹ <%= amount %></div>
    <br/>
    <form method="post" action="<%=url%>" name="paytm">
@@ -38,7 +38,7 @@
 		<%}%>
           <input type="hidden" name="CHECKSUMHASH" value="<%=hash%>">
  </form>
- <div><div id="done" class="button green rounded">Proceed To Pay</div></div>
+ <div><div id="done" class="button green rounded ink-white">Proceed To Pay</div></div>
   </div>
   <br/>
   </div>
@@ -54,7 +54,6 @@
   #bdy {
     min-height: 85vh;
     width: 100%;
-    background-image: url(/images/bk.png);
   }
 
 </style>
