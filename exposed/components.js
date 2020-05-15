@@ -80,24 +80,20 @@ class NavBar extends HTMLElement {
         const css = `<style>
         .navbar {
             min-height: 1rem;
-            background-color: rgba(245, 245, 245, 0.77);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             flex-direction: row;
             align-items: center;
-            top: 0px;
             overflow: hidden;
-            padding: 0.8rem;
             color: rgb(255, 255, 255);
             font-size: 0.9rem;
             font-weight: 500;
-            z-index:2;
             width:100%;
-            border-bottom: solid thin #00000012;
-            box-shadow: 0px 0px 5px 0px #00000070;
-            position: ${pos};
         }
-        
+        :host { 
+            position: ${pos};
+            top: 0px;
+            z-index:3;
+            width:100%;
+         }
         #navbar-l {
             display: flex;
             justify-content: space-around;
@@ -114,7 +110,11 @@ class NavBar extends HTMLElement {
         #expand{
             color:rgb(51, 51, 51);
             font-size: 2rem;
-            font-weight: 300;
+            font-weight: 600;
+            display:none;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
         }
         #x{
             color: rgb(37, 37, 37);
@@ -129,6 +129,7 @@ class NavBar extends HTMLElement {
             padding: 0.8rem 1rem;
             flex-direction: column;
             justify-content:center;
+            background-color:white;
         }
         .link {
             margin: 0rem 0.2rem;
@@ -154,6 +155,32 @@ class NavBar extends HTMLElement {
                 font-weight:400;
                 width:100%;
             }
+            #expand{
+                display:flex;
+            }
+        }
+        
+        #head{
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: solid thin #00000012;
+            box-shadow: 0px 0px 5px 0px #00000070;
+            position:relative;
+            width:100%;
+            background-color:white;
+            padding:0.4rem 0.8rem;
+            z-index:5;
+            display:grid;
+            grid-template-columns:10rem auto;
+        }
+        @media(max-width:700px){
+            #head{
+                grid-template-columns:auto 5rem;
+            }
+        }
+        #brnd{
+            display:flex;
+            align-items:center;
         }
         </style>`;
         var links = '';
@@ -165,23 +192,22 @@ class NavBar extends HTMLElement {
             links += `<a class="${cls}" href=${link.url}>${link.name}</a>`;
         })
         var smLinksDisplay = "none";
-        var smTitleDisplay = "flex";
+        var smTitleDisplay = "grid";
         if (this.state.isexpanded) {
             smLinksDisplay = "flex";
             smTitleDisplay = "none";
         }
-        var html = `<div class="navbar" id="navbar-l">${links}</div>
-        <div id="sm">
-        <div class="navbar" id="navbar-s" style="display:${smTitleDisplay}">
-        <div style="color:black;">${activeName}</div>
+        var html = `<div id="head" style="display:${smTitleDisplay}">
+        <div id="brnd"><img src="/images/branding.png"/></div>
+        <div class="navbar" id="navbar-l">${links}</div>
         <div id="expand">=</div>
         </div>
+
         <div class="navbar" id="menu" style="display:${smLinksDisplay}">
            <div id="close">
            <div id="x">X</div>
            </div>
            ${links}
-           </div>
            </div>`;
         this.shadowRoot.innerHTML = (sharedStyles + css + html);
         this.listen();

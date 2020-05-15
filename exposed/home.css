@@ -5,7 +5,7 @@ body {
     text-shadow: 0px 8px 13px black;
 }
 #hero {
-    height: 27rem;
+    height: 22rem;
     max-height: 90vh;
     width: 100%;
     padding: 1rem;
@@ -17,7 +17,11 @@ body {
     -webkit-transition: background-image 1s ease-in-out;
     transition: background-image 1s ease-in-out;
 }
-
+@media(max-width:700px){
+    #hero{
+        height: 23rem;
+    }
+}
 #sec {
     display: block;
 }
