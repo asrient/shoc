@@ -38,12 +38,16 @@ function historyObj(doc) {
   else if (doc.status == 'WAITING') {
     color = 'orange';
   }
+  var dt='';
+  if(doc.init_on!=undefined){
+    dt=new Date(doc.init_on).toLocaleDateString();
+  }
   return {
     month: doc.month,
     name: common.months[doc.month] + ' fees',
     amount: doc.received_amount,
     status: doc.status,
-    date: new Date(doc.init_on).toLocaleDateString(),
+    date: dt,
     via: doc.via,
     order_id: doc.order_id,
     color
