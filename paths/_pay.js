@@ -8,8 +8,8 @@ let app = Router();
 function getAcceptingMonths() {
   const str = process.env.ACCEPTING_MONTHS;
   const arr = str.split(',');
-  arr.forEach((month) => {
-    month = Number(month);
+  arr.forEach((month,ind) => {
+    arr[ind] = parseInt(month);
   })
   return arr;
 }
@@ -63,48 +63,53 @@ function genarateOrder(enroll, month, amt, cb) {
 app.get('/_pay', (req, res) => {
   if (res.enroll != null) {
     if (req.query.month != undefined) {
-      const payMonth = req.query.month;
-      const acceptingMonths = getAcceptingMonths();
-      if (acceptingMonths.includes(payMonth)) {
-        const ac_year = process.env.AC_YEAR;
-        const monthly_fees = process.env.MONTHLY_FEES;
-        var admission_fees = process.env.PREP_ADMISSION_FEES;
-        if (res.class == 'Lower') {
-          admission_fees = process.env.LOWER_ADMISSION_FEES;
+      const payMonth = parseInt(req.query.month);
+      var acceptingMonths = getAcceptingMonths();
+      const ac_year = process.env.AC_YEAR;
+      const monthly_fees = process.env.MONTHLY_FEES;
+      var admission_fees = process.env.PREP_ADMISSION_FEES;
+      common.dues.find({ enroll: res.enroll, ac_year }).exec((err, spDues) => {
+        if(spDues!=null){
+         spDues.forEach(spDue=>{
+          acceptingMonths.push(parseInt(spDue.month));
+        }) 
         }
-        else if (res.class == 'Upper') {
-          admission_fees = process.env.UPPER_ADMISSION_FEES;
-        }
-        common.fees.findOne({ enroll: res.enroll, ac_year, month: payMonth, status: 'PAID' }).exec((err, rec) => {
-          if (rec == null) {
-            var payAmt = monthly_fees;
-            if (payMonth == 0) {
-              payAmt = admission_fees;
-            }
-            genarateOrder(res.enroll, payMonth, payAmt, (payload, hash) => {
-              res.render('pay', {
-                enroll: res.enroll,
-                name: res.name,
-                cls: res.class,
-                payload,
-                hash,
-                payName: common.months[payMonth] + ' fees',
-                amount: payAmt,
-                url: process.env.TRANSACTION_URL
-              })   //
-            })
+        if (acceptingMonths.includes(payMonth)) {
+          if (res.class == 'Lower') {
+            admission_fees = process.env.LOWER_ADMISSION_FEES;
           }
-          else
-            res.render('error', { message: 'Fee already paid: FEE_RECORD_EXISTS' });
-        });
-      }
-      else
-        res.render('error', { message: 'Not accepting fees for requested month: MONTH_NOT_IN_ACCEPTING_MONTHS' });
-
+          else if (res.class == 'Upper') {
+            admission_fees = process.env.UPPER_ADMISSION_FEES;
+          }
+          common.fees.findOne({ enroll: res.enroll, ac_year, month: payMonth, status: 'PAID' }).exec((err, rec) => {
+            if (rec == null) {
+              var payAmt = monthly_fees;
+              if (payMonth == 0) {
+                payAmt = admission_fees;
+              }
+              genarateOrder(res.enroll, payMonth, payAmt, (payload, hash) => {
+                res.render('pay', {
+                  enroll: res.enroll,
+                  name: res.name,
+                  cls: res.class,
+                  payload,
+                  hash,
+                  payName: common.months[payMonth] + ' fees',
+                  amount: payAmt,
+                  url: process.env.TRANSACTION_URL
+                })   //
+              })
+            }
+            else
+              res.render('error', { message: 'Fee already paid: FEE_RECORD_EXISTS' });
+          });
+        }
+        else
+          res.render('error', { message: 'Not accepting fees for requested month: MONTH_NOT_IN_ACCEPTING_MONTHS' });
+      })
     }
     else
       res.render('error', { message: 'Invalid Request: MISSING_QUERY_MONTH' });
-
   }
   else
     res.redirect('/login?next=' + req.url);

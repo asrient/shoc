@@ -9,8 +9,8 @@ let app = Router();
 function getAcceptingMonths() {
   const str = process.env.ACCEPTING_MONTHS;
   const arr = str.split(',');
-  arr.forEach((month) => {
-    month = Number(month);
+  arr.forEach((month,ind) => {
+    arr[ind] = parseInt(month);
   })
   return arr;
 }

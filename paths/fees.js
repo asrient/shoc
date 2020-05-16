@@ -7,8 +7,8 @@ let app = Router();
 function getAcceptingMonths() {
   const str = process.env.ACCEPTING_MONTHS;
   const arr = str.split(',');
-  arr.forEach((month) => {
-    month = Number(month);
+  arr.forEach((month,ind) => {
+    arr[ind] = parseInt(month);
   })
   return arr;
 }
@@ -59,8 +59,10 @@ app.get('/fees', (req, res) => {
     common.fees.find({ enroll: res.enroll, ac_year }).sort({ 'init_on': -1 }).exec((err, recs) => {
       var history = [];
       var dueMonths = acceptingMonths;
+      var paidMonths = [];
       recs.forEach((rec) => {
         if (rec.status == 'PAID') {
+          paidMonths.push(rec.month);
           var dInd = dueMonths.findIndex((due) => { return due == rec.month });
           if (dInd >= 0) {
             dueMonths.splice(dInd, 1);
@@ -68,8 +70,15 @@ app.get('/fees', (req, res) => {
         }
         history.push(historyObj(rec));
       })
-      const dues = dueMonths.map((month) => { return dueObj(res.class, month) })
-      res.render('fees', { enroll: res.enroll, name: res.name, cls: res.class, dues, history })
+      common.dues.find({ enroll: res.enroll, ac_year }).exec((err, spDues) => {
+        spDues.forEach((rec) => {
+          if (!paidMonths.includes(rec.month) && !dueMonths.includes(rec.month)) {
+            dueMonths.push(rec.month);
+          }
+        })
+        const dues = dueMonths.map((month) => { return dueObj(res.class, month) })
+        res.render('fees', { enroll: res.enroll, name: res.name, cls: res.class, dues, history })
+      })
     });
   }
   else

@@ -6,6 +6,7 @@ code = (length = 10) => { return crypto.randomBytes(length).toString('hex'); }
 const users = require('./models.js').users;
 const students = require('./models.js').students;
 const fees = require('./models.js').fees;
+const dues = require('./models.js').dues;
 
 const baseDir = __dirname;
 
@@ -25,4 +26,4 @@ const months = [
     'December'
 ]
 
-module.exports = { time, code, users, students, fees, baseDir, months };
+module.exports = { time, code, users, students, fees, dues, baseDir, months };

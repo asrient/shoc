@@ -45,4 +45,12 @@ let fee = new mongoose.Schema({
 
 const fees = mongoose.model('fees', fee);
 
-module.exports = { students, users, fees };
+let due = new mongoose.Schema({
+    enroll: String,
+    month: Number,
+    ac_year: Number
+})
+
+const dues = mongoose.model('dues', due);
+
+module.exports = { students, users, fees, dues };
