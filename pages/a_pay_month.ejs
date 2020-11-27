@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166351312-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166351312-1');
+    </script>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/common.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/components.js"></script>
+  <title>Payments - Sen House of Children</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+
+<body>
+  <x-navbar active="/fees"></x-navbar>
+  <div id="bdy">
+    <%- include('pannel', {name:month,enroll:'Payments',cls:''}); %>
+    <br/>
+  <div class="container">
+    <br/>
+    <% if(history.length){ %>
+    <div class="size-xl base-regular ink-grey">PAID</div>
+    <div style="padding-top:0.5rem">
+      <% history.forEach(function(rec){ %>
+        <div class="history">
+          <div class="center ink-grey size-xs base-semilight"><%= rec.enroll %></div>
+          <div class="center size-xs ink-secondary base-light"><%= rec.name %></div>
+          <div class="center size-xs ink-blue base-light"><%= rec.order_id %></div>
+          <div class="center size-xs ink-secondary base-light">₹ <%= rec.amount %></div>
+          <div class="center size-xs ink-grey base-light"><%= rec.date %></div>
+        </div>
+        <% }) %>
+    </div>
+    <% } %>
+  </div>
+  <br/>
+  </div>
+  <x-footer></x-footer>
+</body>
+
+</html>
+<style>
+  .due{
+    margin: 0.5rem;
+    background-color: var(--tertiary);
+    border-radius: 0.4rem;
+    padding: 0.7rem 1rem;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+  }
+  .history{
+    margin: 0.4rem;
+    background-color: var(--tertiary);
+    border-radius: 0.4rem;
+    padding: 0.4rem 0.5rem;
+    display: grid;
+    grid-template-columns: 10% 30% 40% 10% 10%;
+  }
+  .pay{
+    display: block;
+    color: white;
+  }
+  .pay:hover{
+    color: white;
+  }
+  @media(max-width:700px){
+    .due{
+      margin: 0.5rem 0rem;
+    }
+    .history{
+      margin: 0.4rem 0rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  #bdy {
+    min-height: 85vh;
+    width: 100%;
+  }
+
+</style>

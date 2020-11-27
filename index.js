@@ -1,4 +1,5 @@
 require('dotenv').config();
+process.env.TZ = 'Asia/Kolkata'
 const express = require('express');
 const path = require('path');
 var mongoose = require('mongoose');
@@ -13,6 +14,7 @@ const fees = require('./paths/fees.js');
 const _pay = require('./paths/_pay.js');
 const _callback = require('./paths/_callback.js');
 const notice = require('./paths/notice.js');
+const admin = require('./paths/admin.js');
 
 require('./houseKeeping.js');
 
@@ -38,15 +40,21 @@ app.set('view engine', 'ejs');
 app.use(function (req, res, next) {
     //console.log(req.cookies);
     res.enroll = null;
+    res.isAdmin = false;
     if (req.cookies.ticket == undefined) {
         next();
     }
     else {
         common.users.findOne({ ticket: req.cookies.ticket }, (err, rec) => {
-            if(rec!=null){
-                res.enroll=rec.enroll;
-                res.name=rec.name;
-                res.class=rec.class;
+            if (rec != null) {
+                if (rec.is_admin) {
+                    res.isAdmin = true;
+                }
+                else {
+                    res.enroll = rec.enroll;
+                    res.name = rec.name;
+                    res.class = rec.class;
+                }
             }
             next();
         })
@@ -89,6 +97,7 @@ app.use(fees);
 app.use(_pay);
 app.use(_callback);
 app.use(notice);
+app.use(admin);
 
 app.use(function (req, res) {
     res.sendFile(__dirname + '/pages/404.html');

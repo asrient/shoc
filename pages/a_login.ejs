@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166351312-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166351312-1');
+    </script>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/common.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/components.js"></script>
+  <title>ADMIN Login - Sen House of Children</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+
+<body>
+  <x-navbar active="/account"></x-navbar>
+  <div id="bdy" class="center-col" style="width:100%">
+    <div class="size-l ink-primary base-light">Admin Log In</div>
+    <br />
+    <form action=<%  if(next!=undefined){
+      %>
+      "/admin/_login?next=<%= next %>"
+      <%
+      }
+      else{
+         %>
+      "/admin/_login"
+      <%
+      }
+     -%> method="POST" class="center-col" style="width:100%">
+      <input placeholder="KEY" id="inp" name="key">
+      <input type="submit" style="display: none;" id="send" placeholder="Send">
+      <label for="send" style="width:7rem;margin-top:0.5rem" class="center">
+        <div class="button rounded secondary ink-tertiary strech">Log In</div>
+      </label>
+    </form>
+  </div>
+  <x-footer></x-footer>
+</body>
+
+</html>
+<style>
+  #bdy {
+    min-height: 80vh;
+    background-image: url(/images/login-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  @media(min-width:700px){
+    #bdy{
+     background-image: url(/images/login-bg-l.jpg); 
+    }
+  }
+  #inp {
+    margin: 0px;
+    background: var(--tertiary);
+    color: var(--primary);
+    border-radius: 2rem;
+    border: none;
+    padding: 0.6rem 1rem;
+    width: 13rem;
+  }
+</style>

@@ -23,7 +23,8 @@ let user = new mongoose.Schema({
     expires_on: Number,
     name: String,
     class: String,
-    ticket: String
+    ticket: String,
+    is_admin: Boolean
 })
 
 const users = mongoose.model('users', user);

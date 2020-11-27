@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166351312-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166351312-1');
+    </script>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/common.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/components.js"></script>
+  <title>ADMIN - Sen House of Children</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+
+<body>
+  <x-navbar active="/account"></x-navbar>
+  <%- include('pannel', {name:'Admin',enroll:'',cls:'Welcome'}); %>
+  <div id="bdy">
+    <div id="cards" class="center ink-primary size-s base-semilight" data-aos="fade-up">
+      <a href="/admin/payments/1" class="card center-col">January</a>
+      <a href="/admin/payments/2" class="card center-col">Feb</a>
+      <a href="/admin/payments/3" class="card center-col">March</a>
+      <a href="/admin/payments/4" class="card center-col">April</a>
+      <a href="/admin/payments/5" class="card center-col">May</a>
+      <a href="/admin/payments/6" class="card center-col">June</a>
+      <a href="/admin/payments/7" class="card center-col">July</a>
+      <a href="/admin/payments/8" class="card center-col">Aug</a>
+      <a href="/admin/payments/9" class="card center-col">Sept</a>
+      <a href="/admin/payments/10" class="card center-col">Oct</a>
+      <a href="/admin/payments/11" class="card center-col">Nov</a>
+      <a href="/admin/payments/12" class="card center-col">Dec</a>
+    </div>
+
+  </div>
+  <x-footer></x-footer>
+</body>
+
+<script>
+</script>
+
+</html>
+<style>
+  #bdy {
+    min-height: 85vh;
+    width: 100%;
+  }
+
+  #cards {
+    width: 100%;
+    flex-flow: wrap;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .card {
+    width: 100%;
+    padding: 3rem 2rem;
+    margin: 1rem;
+    background-color: var(--tertiary);
+    border-radius: 0.6rem;
+    max-width: 20rem;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    opacity: 0.9;
+  }
+</style>
