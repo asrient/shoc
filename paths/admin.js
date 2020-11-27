@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router;
 const common = require('../common.js');
+const { getDetails, recheck } = require('../payments.js');
 
 let app = Router();
 
@@ -22,29 +23,41 @@ function paidObj(doc) {
   };
 }
 
+app.get('/admin/recheck/:month', (req, res) => {
+  if (res.isAdmin) {
+    var month = parseInt(req.params.month);
+    const ac_year = process.env.AC_YEAR;
+    recheck({ ac_year, month }, () => {
+      res.redirect('/admin/payments/' + month);
+    })
+  }
+  else
+    res.redirect('/admin/login');
+})
+
 app.get('/admin/payments/:month', (req, res) => {
   if (res.isAdmin) {
     var month = parseInt(req.params.month);
     const ac_year = process.env.AC_YEAR;
     common.fees.find({ status: 'PAID', ac_year, month }).sort({ 'init_on': -1 }).exec((err, recs) => {
       var paids = []
-      if(recs.length){
-      recs.forEach((rec) => {
-        common.students.findOne({ enroll: rec.enroll }, (err, stud) => {
-          obj = paidObj(rec);
-          if (stud) {
-            obj.name = stud.name
-          }
-          paids.push(obj);
-          if (paids.length == recs.length) {
-            res.render('a_pay_month', { history: paids, month: common.months[month] })
-          }
+      if (recs.length) {
+        recs.forEach((rec) => {
+          common.students.findOne({ enroll: rec.enroll }, (err, stud) => {
+            obj = paidObj(rec);
+            if (stud) {
+              obj.name = stud.name
+            }
+            paids.push(obj);
+            if (paids.length == recs.length) {
+              res.render('a_pay_month', { history: paids, month: common.months[month], month_no: month })
+            }
+          })
         })
-      })
-    }
-    else{
-      res.render('a_pay_month', { history: [], month: common.months[month] })
-    }
+      }
+      else {
+        res.render('a_pay_month', { history: [], month: common.months[month], month_no: month })
+      }
     })
 
   }

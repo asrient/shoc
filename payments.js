@@ -41,4 +41,42 @@ function getDetails(orderId, cb) {
     });
 }
 
-module.exports = { getDetails }
+function recheck(query,cb=function(){}){
+    common.fees.find({ status: 'WAITING', ...query }).exec((err, recs) => {
+        var counter=0;
+        var done=()=>{
+            if(recs.length==counter){
+                cb()
+            }
+        }
+        if(recs.length){
+        recs.forEach((rec,ind) => {
+          getDetails(rec.order_id, (data) => {
+            if (data.STATUS == 'TXN_SUCCESS') {
+              const amt = parseInt(data.TXNAMOUNT);
+              const paidOn = common.time();
+              if (amt != rec.required_amount) {
+                console.error("Required amount not received!", amt, rec.required_amount);
+              }
+              rec.received_amount = amt;
+              rec.paid_on = paidOn;
+              rec.status = 'PAID';
+              rec.details = data;
+            }
+            else if (data.STATUS == 'TXN_FAILURE') {
+              rec.status = 'FAILED';
+            }
+            rec.save((err) => {
+              counter++;
+              done();
+            })
+            })
+        })
+      }
+      else{
+        done();
+      }
+      })
+}
+
+module.exports = { getDetails,recheck }
