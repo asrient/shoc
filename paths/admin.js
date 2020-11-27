@@ -23,16 +23,16 @@ function paidObj(doc) {
   };
 }
 
-app.get('/admin/recheck/:month', (req, res) => {
+app.post('/api/admin/recheck/:month', (req, res) => {
   if (res.isAdmin) {
     var month = parseInt(req.params.month);
     const ac_year = process.env.AC_YEAR;
     recheck({ ac_year, month }, () => {
-      res.redirect('/admin/payments/' + month);
+      res.status(201).json({ msg: 'rechecked' });
     })
   }
   else
-    res.redirect('/admin/login');
+    res.status(401).json({ msg: 'unauthorised' });
 })
 
 app.get('/admin/payments/:month', (req, res) => {

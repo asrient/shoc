@@ -2,18 +2,18 @@
 <html>
 
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166351312-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166351312-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'UA-166351312-1');
-    </script>
+    gtag('config', 'UA-166351312-1');
+  </script>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="/common.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -26,25 +26,28 @@
   <x-navbar active="/fees"></x-navbar>
   <div id="bdy">
     <%- include('pannel', {name,enroll,cls}); %>
-    <br/>
-  <div class="container">
-    <% if(dues.length){ %>
-    <div class="size-xl base-regular ink-primary">Due Fees</div>
-    <div style="padding-top:0.5rem">
-      <% dues.forEach(function(due){ %>
+    <br />
+    <div class="container">
+      <% if(dues.length){ %>
+      <div class="size-xl base-regular ink-primary">Due Fees</div>
+      <div style="padding-top:0.5rem">
+        <% dues.forEach(function(due){ %>
         <div class="due">
           <div class="center size-s ink-secondary base-regular"><%= due.name %></div>
           <div class="center size-s ink-red base-regular">₹ <%= due.amount %></div>
           <div class="center"><a class="size-s ink-white button green rounded pay" href="<%= due.url %>">Pay</a></div>
         </div>
-      <% }) %>
-    </div>
-    <% } %>
-    <br/>
-    <% if(history.length){ %>
-    <div class="size-xl base-regular ink-grey">Payment History</div>
-    <div style="padding-top:0.5rem">
-      <% history.forEach(function(rec){ %>
+        <% }) %>
+      </div>
+      <% } %>
+      <br />
+      <% if(history.length){ %>
+      <div class="size-xl base-regular ink-grey">Payment History</div>
+      <div class="center">
+        <div class="button blue rounded bordered" onclick="recheck()">Recheck</div>
+      </div>
+      <div style="padding-top:0.5rem">
+        <% history.forEach(function(rec){ %>
         <div class="history">
           <div class="center ink-<%=rec.color%> size-xs base-semilight"><%= rec.status %></div>
           <div class="center size-xs ink-secondary base-light"><%= rec.name %></div>
@@ -53,17 +56,32 @@
           <div class="center size-xs ink-grey base-light"><%= rec.date %></div>
         </div>
         <% }) %>
+      </div>
+      <% } %>
     </div>
-    <% } %>
-  </div>
-  <br/>
+    <br />
   </div>
   <x-footer></x-footer>
 </body>
+<script>
+  const api=new Api();
+  function recheck() {
+    api.post('recheck', {}, (scode, res) => {
+      if (scode == 201) {
+        console.log('rechecked!')
+        window.location.reload()
+      } else if (scode == 400) {
+        alert(res.msg);
+      } else if (scode == 401) {
+        window.location.href = "/login?next=" + window.location.pathname
+      }
+    })
+  }
+</script>
 
 </html>
 <style>
-  .due{
+  .due {
     margin: 0.5rem;
     background-color: var(--tertiary);
     border-radius: 0.4rem;
@@ -71,7 +89,8 @@
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
   }
-  .history{
+
+  .history {
     margin: 0.4rem;
     background-color: var(--tertiary);
     border-radius: 0.4rem;
@@ -79,26 +98,30 @@
     display: grid;
     grid-template-columns: 10% 30% 40% 10% 10%;
   }
-  .pay{
+
+  .pay {
     display: block;
     color: white;
   }
-  .pay:hover{
+
+  .pay:hover {
     color: white;
   }
-  @media(max-width:700px){
-    .due{
+
+  @media(max-width:700px) {
+    .due {
       margin: 0.5rem 0rem;
     }
-    .history{
+
+    .history {
       margin: 0.4rem 0rem;
       display: flex;
       flex-direction: column;
     }
   }
+
   #bdy {
     min-height: 85vh;
     width: 100%;
   }
-
 </style>

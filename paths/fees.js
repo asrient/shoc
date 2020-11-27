@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router;
 const common = require('../common.js');
+const { getDetails, recheck } = require('../payments.js');
 
 let app = Router();
 
@@ -87,6 +88,17 @@ app.get('/fees', (req, res) => {
   }
   else
     res.redirect('/login?next=/fees');
+})
+
+app.post('/api/recheck', (req, res) => {
+  if (res.enroll) {
+    const ac_year = process.env.AC_YEAR;
+    recheck({ ac_year, enroll:res.enroll }, () => {
+      res.status(201).json({msg:'rechecked'});
+    })
+  }
+  else
+    res.status(401).json({msg:'unauthorised'});
 })
 
 module.exports = app;
