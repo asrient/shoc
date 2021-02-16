@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <atom:link href="https://newapi.listnr.tech/backend/backend/feed-rss.xml" rel="self" type="application/rss+xml"/>
+    <title>Singing is hard</title>
+    <link>https://listnr.tech/share/Singing_is_hard/60288ffde27f8c4b90260030</link>
+    <description>yet why is it often so hard to sing? </description>
+    <language>en-us</language>
+    <copyright>© 2021 asrient</copyright>
+    <pubDate>Tue, 16 Feb 2021 10:13:06 GMT</pubDate>
+    <category>International</category>
+    <generator>jsonfeed-to-rss 3.0.4 (https://github.com/bcomnes/jsonfeed-to-rss#readme)</generator>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <image>
+      <url>https://firebasestorage.googleapis.com/v0/b/listnr-d69e6.appspot.com/o/images%2F44379861-perfect-pine-cone-studio-shot-isolated-on-white.jpg?alt=media&amp;token=a5a4c92f-8376-412d-a2cf-693122aabb07</url>
+      <link>https://listnr.tech/share/Singing_is_hard/60288ffde27f8c4b90260030</link>
+      <title>Singing is hard</title>
+    </image>
+    <itunes:author>asrient</itunes:author>
+    <itunes:summary>yet why is it often so hard to sing?</itunes:summary>
+    <itunes:subtitle>yet why is it often so hard to sing?</itunes:subtitle>
+    <itunes:type>episodic</itunes:type>
+    <itunes:owner>
+      <itunes:name>asrient</itunes:name>
+      <itunes:email>aritra.exe@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://firebasestorage.googleapis.com/v0/b/listnr-d69e6.appspot.com/o/images%2F44379861-perfect-pine-cone-studio-shot-isolated-on-white.jpg?alt=media&amp;token=a5a4c92f-8376-412d-a2cf-693122aabb07"/>
+    <item>
+      <title>EP1</title>
+      <link>http://localhost:8000/backend/audio/get/1bc70190-6fb6-11eb-8716-e19d88373993.mp3</link>
+      <dc:creator>asrient</dc:creator>
+      <description>EP1
+Why Are So Many Disembodied Feet Washing Ashore In British Columbia?
+Created by Listnr</description>
+      <content:encoded><![CDATA[<h1>EP1</h1>
+<p>Why Are So Many Disembodied Feet Washing Ashore In British Columbia?
+Created by Listnr</p>]]></content:encoded>
+      <guid isPermaLink="false">http://localhost:8000/backend/audio/get/1bc70190-6fb6-11eb-8716-e19d88373993.mp3</guid>
+      <pubDate>Tue, 16 Feb 2021 10:13:06 GMT</pubDate>
+      <enclosure type="audio/mp3" url="http://localhost:8000/backend/audio/get/1bc70190-6fb6-11eb-8716-e19d88373993.mp3" length="152355"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:title>EP1</itunes:title>
+      <itunes:author>asrient</itunes:author>
+      <itunes:subtitle>EP1</itunes:subtitle>
+      <itunes:summary>EP1</itunes:summary>
+      <itunes:image>https://firebasestorage.googleapis.com/v0/b/listnr-d69e6.appspot.com/o/images%2F44379861-perfect-pine-cone-studio-shot-isolated-on-white.jpg?alt=media&amp;token=a5a4c92f-8376-412d-a2cf-693122aabb07</itunes:image>
+      <itunes:duration>0:15</itunes:duration>
+    </item>
+  </channel>
+</rss>
